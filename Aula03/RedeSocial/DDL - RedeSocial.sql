@@ -1,0 +1,30 @@
+-- DDL
+-- CREATE
+-- ALTER
+-- DROP
+
+CREATE DATABASE db_redesocial
+
+USE db_redesocial
+
+CREATE TABLE Usuarios(
+	Id INT PRIMARY KEY NOT NULL,
+	Nome VARCHAR(50) NOT NULL,
+	_Login VARCHAR(50) NOT NULL,
+	Senha VARCHAR(50) NOT NULL
+)
+
+CREATE TABLE Postagens(
+	Id INT PRIMARY KEY NOT NULL,
+	Titulo VARCHAR(50) NOT NULL,
+	Descricao VARCHAR(1000) NOT NULL,
+	FK_Usuarios INT NULL
+	FOREIGN KEY (FK_Usuarios) REFERENCES Usuarios (Id)
+)
+
+CREATE TABLE Temas(
+	Id INT PRIMARY KEY NOT NULL,
+	Descricao VARCHAR(1000) NOT NULL, 
+	FK_Postagens INT NULL,
+	FOREIGN KEY (FK_Postagens) REFERENCES Postagens (Id)
+)
